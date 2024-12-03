@@ -23,13 +23,13 @@ class MainApp(QMainWindow):
 
         # Справочники
         references_menu = menubar.addMenu("Справочники")
-        self.add_action(references_menu, "Товары", self.open_reference_view)
-        self.add_action(references_menu, "Статьи расходов", self.open_reference_view)
+        self.add_action(references_menu, "Товары", self.open_warehouses)
+        self.add_action(references_menu, "Статьи расходов", self.open_expense_items)
 
         # Журналы
         journals_menu = menubar.addMenu("Журналы")
-        self.add_action(journals_menu, "Продажи", self.open_journal_view)
-        self.add_action(journals_menu, "Расходы", self.open_journal_view)
+        self.add_action(journals_menu, "Продажи", self.open_sales)
+        self.add_action(journals_menu, "Расходы", self.open_charges)
 
         # Отчеты
         reports_menu = menubar.addMenu("Отчеты")
@@ -42,12 +42,22 @@ class MainApp(QMainWindow):
         menu.addAction(action)
 
     # Методы открытия форм
-    def open_reference_view(self):
-        view = ReferenceView(self.db)
+    def open_expense_items(self):
+        # Открыть справочник статей расходов
+        reference_view = ReferenceView(self.db, "expense_items")  # Передаем 'expense_items' для статей расходов
+        reference_view.exec_()
+
+    def open_warehouses(self):
+        # Открыть справочник товаров
+        reference_view = ReferenceView(self.db, "warehouses")  # Передаем 'warehouses' для товаров
+        reference_view.exec_()
+
+    def open_sales(self):
+        view = JournalView(self.db, "sales")
         view.exec_()
 
-    def open_journal_view(self):
-        view = JournalView(self.db)
+    def open_charges(self):
+        view = JournalView(self.db, "charges")
         view.exec_()
 
     def open_report_view(self):
