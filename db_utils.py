@@ -50,3 +50,19 @@ class Database:
         if user and hashlib.sha256(user['password_hash'].encode('utf-8')).hexdigest():
             return user
         return None
+
+    def calculate_monthly_profit(self):
+        try:
+            # Вызов хранимой процедуры для расчета прибыли за месяц
+            result = self.query("SELECT * FROM calculate_monthly_profit()")
+            return result[0] if result else None
+        except Exception as e:
+            raise Exception(f"Не удалось рассчитать прибыль: {e}")
+
+    def get_top_5_revenue_items(self, start_date, end_date):
+        try:
+            # Вызов хранимой процедуры для получения топ-5 товаров по выручке
+            result = self.query("SELECT * FROM top_5_revenue_items(%s, %s)", (start_date, end_date))
+            return result
+        except Exception as e:
+            raise Exception(f"Не удалось получить топ-5 товаров: {e}")

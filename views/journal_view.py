@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from datetime import datetime
 
 class JournalView(QDialog):
-    def __init__(self, db, journal_type):
+    def __init__(self, db, journal_type, user_role):
         """
         Инициализация окна. journal_type указывает, какой тип журнала:
         'sales' для журнала продаж и 'charges' для журнала расходов.
@@ -11,6 +11,7 @@ class JournalView(QDialog):
         super().__init__()
         self.db = db
         self.journal_type = journal_type  # Тип журнала ('sales' или 'charges')
+        self.user_role = user_role
         self.init_ui()
 
     def init_ui(self):
@@ -33,17 +34,18 @@ class JournalView(QDialog):
 
         # Кнопки управления
         button_layout = QHBoxLayout()
-        self.add_button = QPushButton("Добавить")
-        self.add_button.clicked.connect(self.add_record)
-        button_layout.addWidget(self.add_button)
+        if self.user_role == "admin":
+            self.add_button = QPushButton("Добавить")
+            self.add_button.clicked.connect(self.add_record)
+            button_layout.addWidget(self.add_button)
 
-        self.edit_button = QPushButton("Изменить")
-        self.edit_button.clicked.connect(self.edit_record)
-        button_layout.addWidget(self.edit_button)
+            self.edit_button = QPushButton("Изменить")
+            self.edit_button.clicked.connect(self.edit_record)
+            button_layout.addWidget(self.edit_button)
 
-        self.delete_button = QPushButton("Удалить")
-        self.delete_button.clicked.connect(self.delete_record)
-        button_layout.addWidget(self.delete_button)
+            self.delete_button = QPushButton("Удалить")
+            self.delete_button.clicked.connect(self.delete_record)
+            button_layout.addWidget(self.delete_button)
 
         layout.addLayout(button_layout)
 

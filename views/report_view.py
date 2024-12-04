@@ -44,13 +44,18 @@ class ReportView(QDialog):
     def generate_profit_report(self):
         try:
             result = self.db.query("""
-                SELECT
-                    SUM(s.amount * s.quantity) AS total_sales,
-                    SUM(c.amount) AS total_expenses,
-                    (SUM(s.amount * s.quantity) - SUM(c.amount)) AS profit
-                FROM sales s, charges c
-                WHERE EXTRACT(MONTH FROM s.sale_date) = EXTRACT(MONTH FROM CURRENT_DATE)
-                AND EXTRACT(YEAR FROM s.sale_date) = EXTRACT(YEAR FROM CURRENT_DATE)
+                SELECT 
+                    COALESCE(SUM(s.amount * s.quantity), 0) AS total_sales,  -- Сумма продаж
+                    COALESCE(SUM(c.amount), 0) AS total_expenses,            -- Сумма расходов
+                    COALESCE(SUM(s.amount * s.quantity), 0) - COALESCE(SUM(c.amount), 0) AS profit  -- Прибыль
+                FROM 
+                    sales s
+                LEFT JOIN 
+                    charges c ON EXTRACT(MONTH FROM s.sale_date) = EXTRACT(MONTH FROM c.charge_date)
+                    AND EXTRACT(YEAR FROM s.sale_date) = EXTRACT(YEAR FROM c.charge_date)
+                WHERE 
+                    EXTRACT(MONTH FROM s.sale_date) = EXTRACT(MONTH FROM CURRENT_DATE)  -- Продажи за текущий месяц
+                    AND EXTRACT(YEAR FROM s.sale_date) = EXTRACT(YEAR FROM CURRENT_DATE)  -- Продажи за текущий год
             """)
             self.current_report = [
                 ("Общая выручка", result[0]['total_sales'] if result else 0),

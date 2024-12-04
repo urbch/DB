@@ -6,6 +6,7 @@ class LoginWindow(QDialog):
     def __init__(self, db):
         super().__init__()
         self.db = db
+        self.user_role = None
         self.init_ui()
 
     def init_ui(self):
@@ -43,9 +44,11 @@ class LoginWindow(QDialog):
         try:
             user = self.db.verify_password(username, password)
             if user:
-                QMessageBox.information(self, "Успех", "Вы успешно вошли в систему.")
+                self.user_role = user['role']  # Сохраняем роль пользователя
+                QMessageBox.information(self, "Успех", f"Вы успешно вошли как {self.user_role}.")
                 self.accept()  # Успешная авторизация
             else:
                 QMessageBox.warning(self, "Ошибка", "Неверный логин или пароль.")
         except Exception as e:
             QMessageBox.critical(self, "Ошибка", f"Не удалось выполнить вход: {e}")
+

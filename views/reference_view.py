@@ -4,7 +4,7 @@ from views.record_form import RecordForm
 
 
 class ReferenceView(QDialog):
-    def __init__(self, db, table_type):
+    def __init__(self, db, table_type, user_role):
         """
         Инициализация окна. table_type указывает, какую таблицу мы показываем:
         'expense_items' для статей расходов и 'warehouses' для товаров.
@@ -12,6 +12,7 @@ class ReferenceView(QDialog):
         super().__init__()
         self.db = db
         self.table_type = table_type  # Тип таблицы ('expense_items' или 'warehouses')
+        self.user_role = user_role
         self.init_ui()
 
     def init_ui(self):
@@ -34,17 +35,18 @@ class ReferenceView(QDialog):
 
         # Кнопки управления
         button_layout = QHBoxLayout()
-        self.add_button = QPushButton("Добавить")
-        self.add_button.clicked.connect(self.add_record)
-        button_layout.addWidget(self.add_button)
+        if self.user_role == "admin":
+            self.add_button = QPushButton("Добавить")
+            self.add_button.clicked.connect(self.add_record)
+            button_layout.addWidget(self.add_button)
 
-        self.edit_button = QPushButton("Изменить")
-        self.edit_button.clicked.connect(self.edit_record)
-        button_layout.addWidget(self.edit_button)
+            self.edit_button = QPushButton("Изменить")
+            self.edit_button.clicked.connect(self.edit_record)
+            button_layout.addWidget(self.edit_button)
 
-        self.delete_button = QPushButton("Удалить")
-        self.delete_button.clicked.connect(self.delete_record)
-        button_layout.addWidget(self.delete_button)
+            self.delete_button = QPushButton("Удалить")
+            self.delete_button.clicked.connect(self.delete_record)
+            button_layout.addWidget(self.delete_button)
 
         layout.addLayout(button_layout)
 
