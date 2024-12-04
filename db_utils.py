@@ -35,6 +35,7 @@ class Database:
             self.conn.rollback()
             raise Exception(f"Ошибка выполнения команды: {e}")
 
+
     def close(self):
         if self.conn:
             self.conn.close()

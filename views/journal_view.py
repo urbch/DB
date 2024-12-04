@@ -4,10 +4,7 @@ from datetime import datetime
 
 class JournalView(QDialog):
     def __init__(self, db, journal_type, user_role):
-        """
-        Инициализация окна. journal_type указывает, какой тип журнала:
-        'sales' для журнала продаж и 'charges' для журнала расходов.
-        """
+
         super().__init__()
         self.db = db
         self.journal_type = journal_type  # Тип журнала ('sales' или 'charges')

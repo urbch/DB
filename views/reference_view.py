@@ -5,13 +5,10 @@ from views.record_form import RecordForm
 
 class ReferenceView(QDialog):
     def __init__(self, db, table_type, user_role):
-        """
-        Инициализация окна. table_type указывает, какую таблицу мы показываем:
-        'expense_items' для статей расходов и 'warehouses' для товаров.
-        """
+
         super().__init__()
         self.db = db
-        self.table_type = table_type  # Тип таблицы ('expense_items' или 'warehouses')
+        self.table_type = table_type
         self.user_role = user_role
         self.init_ui()
 

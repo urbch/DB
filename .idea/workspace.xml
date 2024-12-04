@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c4abf91-d0d3-4546-891f-fd75d1dea454" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/journal_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/journal_view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/reference_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/reference_view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/report_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/report_view.py" afterDir="false" />
@@ -28,24 +25,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2phx2MOkoj76Ddhldrc718lTtVA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.db_utils.executor": "Debug",
-    "Python.main.executor": "Run",
-    "Python.report_view.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.db_utils.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.report_view.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ShopDbApp" />
@@ -102,12 +99,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733239435341</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="надеюсь конец">
+      <option name="closed" value="true" />
+      <created>1733302854463</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733302854463</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="первый рабочий" />
     <MESSAGE value="ура ура работает" />
-    <option name="LAST_COMMIT_MESSAGE" value="ура ура работает" />
+    <MESSAGE value="надеюсь конец" />
+    <option name="LAST_COMMIT_MESSAGE" value="надеюсь конец" />
   </component>
 </project>
